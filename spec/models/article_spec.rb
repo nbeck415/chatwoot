@@ -25,13 +25,13 @@ RSpec.describe Article, type: :model do
     let!(:category_3) { create(:category, slug: 'category_3', locale: 'es', portal_id: portal_2.id) }
 
     before do
-      create(:article, category_id: category_1.id, content: 'This is the content', description: 'this is the description', title: 'this is title',
+      create(:article, author_id: user.id, category_id: category_1.id, content: 'This is the content', description: 'this is the description', title: 'this is title',
                        portal_id: portal_1.id)
-      create(:article, category_id: category_1.id, title: 'title 1', portal_id: portal_1.id)
-      create(:article, category_id: category_2.id, title: 'title 2', portal_id: portal_2.id)
-      create(:article, category_id: category_2.id, title: 'title 3', portal_id: portal_1.id)
-      create(:article, category_id: category_3.id, title: 'title 6', portal_id: portal_2.id)
-      create(:article, category_id: category_2.id, title: 'title 7', portal_id: portal_1.id)
+      create(:article, author_id: user.id, category_id: category_1.id, title: 'title 1', portal_id: portal_1.id)
+      create(:article, author_id: user.id, category_id: category_2.id, title: 'title 2', portal_id: portal_2.id)
+      create(:article, author_id: user.id, category_id: category_2.id, title: 'title 3', portal_id: portal_1.id)
+      create(:article, author_id: user.id, category_id: category_3.id, title: 'title 6', portal_id: portal_2.id)
+      create(:article, author_id: user.id, category_id: category_2.id, title: 'title 7', portal_id: portal_1.id)
     end
 
     context 'when no parameters passed' do
