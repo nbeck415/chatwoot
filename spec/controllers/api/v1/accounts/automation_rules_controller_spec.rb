@@ -81,7 +81,7 @@ RSpec.describe 'Api::V1::Accounts::AutomationRulesController', type: :request do
               action_params: [{ intiated_at: '2021-12-03 17:25:26.844536 +0530' }]
             }
           ]
-        }.with_indifferent_access
+        }
       end
 
       it 'throws an error for unknown attributes in condtions' do
@@ -119,7 +119,7 @@ RSpec.describe 'Api::V1::Accounts::AutomationRulesController', type: :request do
             filter_operator: 'equal_to',
             values: ['resolved'],
             query_operator: nil
-          }.with_indifferent_access
+          }
         ]
         expect(account.automation_rules.count).to eq(0)
 

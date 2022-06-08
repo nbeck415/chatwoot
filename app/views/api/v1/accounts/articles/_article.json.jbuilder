@@ -9,6 +9,8 @@ json.portal do
   json.partial! 'api/v1/accounts/portals/portal.json.jbuilder', portal: article.portal
 end
 json.views article.views
-json.author do
-  json.partial! 'api/v1/models/agent.json.jbuilder', resource: article.author
+if article.author.present?
+  json.author do
+    json.partial! 'api/v1/models/agent.json.jbuilder', resource: article.author
+  end
 end
