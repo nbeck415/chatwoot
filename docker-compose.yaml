@@ -17,6 +17,8 @@ services:
 
   rails:
     <<: *base
+    labels:
+      shipyard.route: '/'
     build:
       context: .
       dockerfile: ./docker/dockerfiles/rails.Dockerfile
