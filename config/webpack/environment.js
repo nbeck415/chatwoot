@@ -6,6 +6,15 @@ const MonacoEditorPlugin = require('monaco-editor-webpack-plugin');
 
 environment.plugins.prepend('VueLoaderPlugin', new VueLoaderPlugin());
 environment.loaders.prepend('vue', vue);
+
+environment.loaders.append('opus', {
+  test: /encoderWorker\.min\.js$/,
+  loader: 'file-loader',
+  options: {
+    name: '[name].[ext]',
+  },
+});
+
 environment.loaders.append('audio', {
   test: /\.(mp3)(\?.*)?$/,
   loader: 'url-loader',

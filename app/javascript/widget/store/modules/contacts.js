@@ -58,11 +58,13 @@ export const actions = {
       if (identifier_hash) {
         dispatch('conversation/clearConversations', {}, { root: true });
         dispatch('conversation/fetchOldConversations', {}, { root: true });
+        dispatch('conversationAttributes/getAttributes', {}, { root: true });
       }
     } catch (error) {
-      const {
-        response: { data },
-      } = error;
+      const data =
+        error && error.response && error.response.data
+          ? error.response.data
+          : error;
       IFrameHelper.sendMessage({
         event: 'error',
         errorType: SET_USER_ERROR,

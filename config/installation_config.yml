@@ -64,4 +64,6 @@
   locked: false
 - name: CSML_BOT_API_KEY
   value:
+- name: ENABLE_MESSENGER_CHANNEL_HUMAN_AGENT
+  value: false
   locked: false

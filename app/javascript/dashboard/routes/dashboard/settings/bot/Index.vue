@@ -34,8 +34,7 @@
                   class-names="grey-btn"
                   :is-loading="loading[bot.id]"
                   @click="deleteBot(bot.id)"
-                >
-                </woot-button>
+                />
               </td>
             </tr>
           </tbody>
@@ -43,7 +42,7 @@
       </div>
 
       <div class="small-4 columns content-box">
-        <p v-html="$t('BOT.SIDEBAR_TXT')"></p>
+        <p v-html="$t('BOT.SIDEBAR_TXT')" />
       </div>
     </div>
     <woot-button

@@ -33,7 +33,7 @@
                 v-model="bot.description"
                 rows="4"
                 :placeholder="$t('BOT.ADD.FORM.DESCRIPTION.PLACEHOLDER')"
-              ></textarea>
+              />
             </label>
             <div class="multiselect--wrap">
               <label>
