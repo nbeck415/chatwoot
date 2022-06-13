@@ -24,7 +24,7 @@ export default {
         },
         {
           path: 'new',
-          name: 'bot',
+          name: 'newbot',
           component: NewBot,
           roles: ['administrator'],
         },

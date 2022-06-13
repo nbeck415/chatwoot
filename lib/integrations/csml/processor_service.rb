@@ -77,6 +77,8 @@ class Integrations::Csml::ProcessorService < Integrations::BotProcessorService
       process_text_messages(message_payload, conversation)
     when 'question'
       process_question_messages(message_payload, conversation)
+    when 'image'
+      process_image_messages(message_payload, conversation)
     end
   end
 
@@ -105,5 +107,29 @@ class Integrations::Csml::ProcessorService < Integrations::BotProcessorService
         content_attributes: { items: buttons }
       }
     )
+  end
+
+  def process_image_messages(message_payload, conversation)
+    message = conversation.messages.new(
+      {
+        message_type: :outgoing,
+        account_id: conversation.account_id,
+        inbox_id: conversation.inbox_id,
+        content: '',
+        content_type: 'text'
+      }
+    )
+
+    attachment_params = { file_type: :image, account_id: conversation.account_id }
+    attachment_url = message_payload['content']['url']
+    attachment = message.attachments.new(attachment_params)
+    attachment_file = Down.download(attachment_url)
+    attachment.file.attach(
+      io: attachment_file,
+      filename: attachment_file.original_filename,
+      content_type: attachment_file.content_type
+    )
+    message.save!
+    attachment.save!
   end
 end

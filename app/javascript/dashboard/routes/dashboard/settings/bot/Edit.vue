@@ -3,7 +3,7 @@
     <div class="row">
       <woot-loading-state
         v-if="uiFlags.isFetching"
-        :message="$('BOT.EDIT.FETCHING_BOT')"
+        :message="$t('BOT.EDIT.FETCHING_BOT')"
       />
       <div v-if="bot" class="small-8 columns">
         <div class="full-height editor-wrapper">
@@ -100,8 +100,10 @@ export default {
       try {
         this.$v.$touch();
         if (this.$v.$invalid) return;
+        this.bot.inboxes = this.bot.inboxes.map(i => i.id);
+
         await this.$store.dispatch('bots/update', this.bot);
-        this.showAlert(this.$('BOT.EDIT.API.SUCCESS_MESSAGE'));
+        this.showAlert(this.$t('BOT.EDIT.API.SUCCESS_MESSAGE'));
       } catch (error) {
         this.showAlert(error);
       }

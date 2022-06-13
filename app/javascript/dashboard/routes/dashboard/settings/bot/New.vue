@@ -88,10 +88,10 @@ export default {
         if (this.$v.$invalid) return;
         this.bot.inboxes = this.bot.inboxes.map(i => i.id);
         await this.$store.dispatch('bots/create', this.bot);
-        this.showAlert(this.$('BOT.ADD.API.SUCCESS_MESSAGE'));
+        this.showAlert(this.$t('BOT.ADD.API.SUCCESS_MESSAGE'));
         this.$router.back();
       } catch (error) {
-        this.showAlert(this.$('BOT.ADD.FORM.BOT_CONFIG.API_ERROR'));
+        this.showAlert(this.$t('BOT.ADD.FORM.BOT_CONFIG.API_ERROR'));
       }
     },
   },
